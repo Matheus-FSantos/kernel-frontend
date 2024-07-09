@@ -1,0 +1,96 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Toaster } from "@/components/ui/toaster";
+import { useToast } from "@/components/ui/use-toast";
+import { DateService } from "@/data/service/date.service";
+
+import { AtSign, Eye, EyeOff, KeyRound, Ungroup } from "lucide-react";
+
+const Login = (): React.ReactElement => {
+	const { toast } = useToast();
+	const navigate = useNavigate();
+	const dateService = new DateService();
+	const [showPassword, setShowPassword] = useState<boolean>(false);
+	
+	const handleSubmit = async (e: React.FormEvent): Promise<void> => {
+		e.preventDefault();
+		toast({
+			title: "Welcome! Wait for auto redirect.",
+			description: dateService.getCurrentDate(),
+		});
+
+		await sleep(2000);
+		navigate("/"); 
+	}
+
+	useEffect(() => {
+		toast({}).dismiss(); //RESET
+	}, [])
+
+	function sleep(ms: number): Promise<void> {
+		return new Promise(resolve => setTimeout(resolve, ms));
+	}
+
+  return (
+		<>
+			<div className="w-full h-lvh flex items-center justify-center bg-neutral-950">
+				<div className="w-8/12 h-5/6 rounded-2xl bg-neutral-950 border border-neutral-800 flex flex-row">
+					<div className="flex-1 p-3 bg-orange-600 bg-opacity-40 border-r border-neutral-800">
+						<p className="font-semibold flex gap-3 items-center"><Ungroup size={ 20 }/> Kernel Corp.</p>
+					</div>
+					<div className="flex-1 p-3 flex items-center justify-center">
+						<div className="w-4/6 flex flex-col gap-10">
+							<div className="flex flex-col justify-start items-start">
+								<h1 className="font-extrabold text-2xl">Login</h1>
+								<h2 className="font-bold text-sm text-neutral-500">Login with your account.</h2>
+							</div>
+
+							<form className="flex flex-col gap-8 w-full" onSubmit={ handleSubmit }>
+								<div className="flex flex-col gap-6">
+									<div className="flex flex-col gap-2">
+										<Label htmlFor="email" className="font-bold relative left-1">E-Mail: <span className="text-orange-600">*</span></Label>
+										<div className="flex flex-row w-full gap-2 items-center">
+											<Input id="email" type="email" placeholder="Type your e-mail..." className="border border-neutral-500"/>
+											<AtSign size={ 18 } className="text-neutral-400" />
+										</div>
+										<p className="text-neutral-400 text-xs font-semibold relative left-1">Ex.: name@example.com</p>
+									</div>
+
+									<div className="flex flex-col gap-2">
+										<Label htmlFor="password" className="font-bold relative left-1">Password: <span className="text-orange-600">*</span></Label>
+										<div className="flex flex-row w-full gap-2 items-center">
+											<Input id="password" type={ showPassword ? "text" : "password"} placeholder="Type your password..." className="border border-neutral-500"/>
+											<div onClick={ ():void => setShowPassword(!showPassword) }>
+												{
+													showPassword ?
+														<EyeOff size={ 18 } className="text-neutral-400 cursor-pointer" />
+													:
+														<Eye size={ 18 } className="text-neutral-400 cursor-pointer" />
+												}
+											</div>
+										</div>
+										<p className="text-neutral-400 text-xs font-semibold relative left-1">Ex.: yourPassword123#</p>
+									</div>
+								</div>
+
+								<Button className="w-3/4 mx-auto flex items-center justify-center gap-3 bg-orange-700 hover:bg-orange-800 text-white font-extrabold"><KeyRound size={ 15 } className="relative top-[1px]" /> Login with account</Button>
+							</form>
+
+							<div className="w-full flex items-center justify-center">
+								<p className="w-4/6 text-center text-neutral-500 text-xs font-semibold">By clicking continue, you agree to our Terms of Service and Privacy Policy.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<Toaster />
+		</>
+  );
+}
+
+export { Login }
