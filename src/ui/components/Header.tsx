@@ -1,7 +1,7 @@
 import { Bell, House, Search } from "lucide-react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 
-import { ProfileAvatar } from "@/ui/components/ProfileAvatar";
+import { ProfileAvatar } from "@/ui/components/user/ProfileAvatar";
 
 const Header = (): React.ReactElement => {
 	const navigate: NavigateFunction = useNavigate();

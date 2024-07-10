@@ -19,7 +19,7 @@ const PostOptions = (): React.ReactElement => {
 				<EllipsisVertical size={ 18 } className="cursor-pointer  hover:opacity-90" />
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className="bg-neutral-900 border border-neutral-700">
-				<DropdownMenuLabel>Actions</DropdownMenuLabel>
+				<DropdownMenuLabel>Options</DropdownMenuLabel>
 				<DropdownMenuSeparator className="bg-neutral-700"/>
 				<DropdownMenuItem>
 					<span className="flex flex-row items-center gap-2  font-black" onClick={ () => navigate("/") }>
