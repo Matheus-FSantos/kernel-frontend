@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { Preload } from "@/pages/Preload";
 import { IUser } from "@/data/interface/user";
 import { IComment } from "@/data/interface/comments";
 import { useDinamicTitle } from "@/data/hooks/useDinamicTitle";
@@ -11,6 +13,8 @@ import { Toaster } from "sonner";
 
 const Home = (): React.ReactElement => {
 	useDinamicTitle("Home");
+	const [isLoading, setIsLoading] = useState<boolean>(true);
+
 	const user: IUser = {
 		avatarUrl: "https://avatars.githubusercontent.com/u/109228925?v=4",
 		profileName: "math__us",
@@ -28,47 +32,61 @@ const Home = (): React.ReactElement => {
 		createdAt: "1 min ago",
 		content: "Amazing!!! 😍 🌎"
 	}
+
+	useEffect(() => {
+		setTimeout(() => {
+			setIsLoading(false);
+		}, 5000);
+	}, []);
 	
 	return (
-		<div className="w-full h-full bg-neutral-950">
-			<GlobalPadding>
-				<div className="flex flex-col gap-10">
-					<Header />
-					<div className="w-full flex flex-col justify-center items-center gap-20 pb-10">
-						<Post
-							user={ user }
-							createdAt="1 min ago"
-							image={ PostImage01PNG }
-							content="Finding moments of peace in nature is essential for my soul. This place is truly restorative. 🌿 #naturetherapy #peaceandquiet #findyourpeace"
-							comment={ comment }
-						/>
+		<>
+			{
+				isLoading ? (
+					<Preload />
+				) : (
+					<div className="w-full h-full bg-neutral-950">
+						<GlobalPadding>
+							<div className="flex flex-col gap-10">
+								<Header />
+								<div className="w-full flex flex-col justify-center items-center gap-20 pb-10">
+									<Post
+										user={ user }
+										createdAt="1 min ago"
+										image={ PostImage01PNG }
+										content="Finding moments of peace in nature is essential for my soul. This place is truly restorative. 🌿 #naturetherapy #peaceandquiet #findyourpeace"
+										comment={ comment }
+									/>
 
-						<Post
-							user={ user }
-							createdAt="10 min ago"
-							image={ PostImage02PNG }
-							content="This place is just breathtaking. 😍 The colors, the light, the air... everything is just perfect. #naturelover #beautifulplaces #getoutside"
-						/>
+									<Post
+										user={ user }
+										createdAt="10 min ago"
+										image={ PostImage02PNG }
+										content="This place is just breathtaking. 😍 The colors, the light, the air... everything is just perfect. #naturelover #beautifulplaces #getoutside"
+									/>
 
-						<Post
-							user={ user }
-							createdAt="1 hour ago"
-							image={ PostImage03PNG }
-							content="Take a deep breath and soak in the beauty of nature. It's good for the soul. 🌎 #natureishealing #getoutside #exploremore"
-						/>
+									<Post
+										user={ user }
+										createdAt="1 hour ago"
+										image={ PostImage03PNG }
+										content="Take a deep breath and soak in the beauty of nature. It's good for the soul. 🌎 #natureishealing #getoutside #exploremore"
+									/>
 
-						<Post
-							user={ user }
-							createdAt="Jun 8, 2024"
-							image={ PostImage04PNG }
-							content="Step into the unknown. The night is young, and the city is calling. 🤫 #TokyoNightlife"
-						/>
+									<Post
+										user={ user }
+										createdAt="Jun 8, 2024"
+										image={ PostImage04PNG }
+										content="Step into the unknown. The night is young, and the city is calling. 🤫 #TokyoNightlife"
+									/>
+								</div>
+
+								<Toaster />
+							</div>
+						</GlobalPadding>
 					</div>
-
-					<Toaster />
-				</div>
-			</GlobalPadding>
-		</div>
+				)
+			}
+		</>
 	);
 }
 
