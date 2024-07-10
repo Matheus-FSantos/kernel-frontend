@@ -58,7 +58,7 @@ const Login = (): React.ReactElement => {
 									<div className="flex flex-col gap-2">
 										<Label htmlFor="email" className="font-bold relative left-1">E-Mail: <span className="text-orange-600">*</span></Label>
 										<div className="flex flex-row w-full gap-2 items-center">
-											<Input id="email" type="email" placeholder="Type your e-mail..." className="border border-neutral-500"/>
+											<Input id="email" type="email" placeholder="Type your e-mail..." className="border border-neutral-500 placeholder:text-neutral-400 placeholder:font-semibold placeholder:opacity-70"/>
 											<AtSign size={ 18 } className="text-neutral-400" />
 										</div>
 										<p className="text-neutral-400 text-xs font-semibold relative left-1">Ex.: name@example.com</p>
@@ -67,7 +67,7 @@ const Login = (): React.ReactElement => {
 									<div className="flex flex-col gap-2">
 										<Label htmlFor="password" className="font-bold relative left-1">Password: <span className="text-orange-600">*</span></Label>
 										<div className="flex flex-row w-full gap-2 items-center">
-											<Input id="password" type={ showPassword ? "text" : "password"} placeholder="Type your password..." className="border border-neutral-500"/>
+											<Input id="password" type={ showPassword ? "text" : "password"} placeholder="Type your password..." className="border border-neutral-500 placeholder:text-neutral-400 placeholder:font-semibold placeholder:opacity-70"/>
 											<div onClick={ ():void => setShowPassword(!showPassword) }>
 												{
 													showPassword ?
