@@ -1,7 +1,4 @@
-import { useTimeout } from "@/data/hooks/useTimeout";
 import { motion } from "framer-motion";
-import { useEffect } from "react";
-import { NavigateFunction, useNavigate } from "react-router-dom";
 
 const icon = {
   hidden: {
