@@ -4,7 +4,7 @@ import { IPostProps } from "@/data/interface/post";
 import { PostAvatar } from "@/ui/components/user/PostAvatar";
 import { PostActions } from "@/ui/components/post/PostActions";
 import { PostOptions } from "@/ui/components/post/PostOptions";
-import { NewCommentButton } from "@/ui/components/comments/NewCommentButton";
+import { NewCommentButton } from "@/ui/components/comment/NewCommentButton";
 
 const Post = ({ user, image, content, createdAt, comment }: IPostProps): React.ReactElement => {
 	const [isFullText, setIsFullText] = useState<boolean>(false);
@@ -36,6 +36,7 @@ const Post = ({ user, image, content, createdAt, comment }: IPostProps): React.R
 				<PostActions
 					type="like"
 					size="lg"
+					className={ isLiked ? "animate-ping" : ""}
 					isActive={ isLiked }
 					isClickable={ true }
 					tooltipContent="Like"

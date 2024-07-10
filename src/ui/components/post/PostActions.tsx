@@ -10,13 +10,14 @@ interface IPostActionsProps {
 	content?: number,
 	size: "sm" | "lg",
 	isActive?: boolean,
+	className?: string,
 	onClick?: () => void,
 	isClickable?: boolean,
 	tooltipContent: string,
 	type: "like" | "share" | "comment"
 }
 
-const PostActions = ({ type, size, content, tooltipContent, isActive, onClick }: IPostActionsProps): React.ReactElement => {
+const PostActions = ({ type, size, content, className, tooltipContent, isActive, onClick }: IPostActionsProps): React.ReactElement => {
 	const handleClick = () => {
 		if(onClick)
 			onClick()
@@ -30,6 +31,7 @@ const PostActions = ({ type, size, content, tooltipContent, isActive, onClick }:
 						{
 							type === "like" ? (
 								<CircleArrowUp
+									className={ className && className }
 									size={ size === "lg" ? 25 : 18 }
 									stroke={ isActive ? "#ea580c" : "#ffffff" }
 								/>

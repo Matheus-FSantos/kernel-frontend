@@ -1,12 +1,13 @@
 import { IUser } from "@/data/interface/user";
+import { IComment } from "@/data/interface/comments";
 import { useDinamicTitle } from "@/data/hooks/useDinamicTitle";
 
 import { Post } from "@/ui/components/post";
-import { Header } from "@/ui/components/Header"
+import { Header } from "@/ui/components/Header";
 import { GlobalPadding } from "@/ui/components/GlobalPadding";
 
 import { PostImage01PNG, PostImage02PNG, PostImage03PNG, PostImage04PNG } from "@/ui/assets/images";
-import { IComment } from "@/data/interface/comments";
+import { Toaster } from "sonner";
 
 const Home = (): React.ReactElement => {
 	useDinamicTitle("Home");
@@ -63,6 +64,8 @@ const Home = (): React.ReactElement => {
 							content="Step into the unknown. The night is young, and the city is calling. 🤫 #TokyoNightlife"
 						/>
 					</div>
+
+					<Toaster />
 				</div>
 			</GlobalPadding>
 		</div>
