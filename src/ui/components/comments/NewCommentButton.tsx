@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/sheet"
 import { PostAvatar } from "../user/PostAvatar";
 import { PostActions } from "../post/PostActions";
-import { CircleFadingPlus, MegaphoneOff, Send } from "lucide-react";
+import { CircleFadingPlus, MegaphoneOff } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
