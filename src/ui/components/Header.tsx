@@ -7,7 +7,7 @@ const Header = (): React.ReactElement => {
 	const navigate: NavigateFunction = useNavigate();
 
 	return (
-		<div className="py-4 flex flex-row justify-between">
+		<div className="py-4 flex flex-row justify-between sticky top-0 bg-neutral-950 z-50 bg-opacity-95">
 			<p className="font-black text-lg cursor-pointer" onClick={ () => navigate("/") }>Kernel</p>
 			<ul className="flex flex-row items-center gap-10">
 				<li className="flex gap-2 items-center font-medium hover:cursor-pointer hover:opacity-75" onClick={ () => navigate("/") }><House size={ 18 } /> Home</li>
