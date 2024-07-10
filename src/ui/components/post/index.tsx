@@ -31,7 +31,7 @@ const Post = ({ user, image, content, createdAt, comment }: IPostProps): React.R
 			>
 				{ content }
 			</p>
-			<img src={ image } alt="Kernel: Post image" className="w-full h-auto cursor-pointer" />
+			<img src={ image } alt="Kernel: Post image" className="w-full h-auto cursor-pointer" onDoubleClick={ () => setIsLiked(true) }/>
 			<div className="flex items-center gap-4">
 				<PostActions
 					type="like"
