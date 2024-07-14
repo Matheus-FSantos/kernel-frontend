@@ -36,7 +36,7 @@ const Home = (): React.ReactElement => {
 	useEffect(() => {
 		setTimeout(() => {
 			setIsLoading(false);
-		}, 5000);
+		}, 0);
 	}, []);
 	
 	return (

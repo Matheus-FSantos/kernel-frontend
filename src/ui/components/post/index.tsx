@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { IPostProps } from "@/data/interface/post";
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 import { PostAvatar } from "@/ui/components/user/PostAvatar";
 import { PostActions } from "@/ui/components/post/PostActions";
@@ -31,7 +32,14 @@ const Post = ({ user, image, content, createdAt, comment }: IPostProps): React.R
 			>
 				{ content }
 			</p>
-			<img src={ image } alt="Kernel: Post image" className="w-full h-auto cursor-pointer" onDoubleClick={ () => setIsLiked(true) }/>
+			<PhotoProvider
+				speed={ () => 500 }
+				maskOpacity={ 0.9 }
+			>
+				<PhotoView src={ image }>
+					<img src={ image } alt="Kernel: Post image" className="w-full h-auto cursor-pointer" onDoubleClick={ () => setIsLiked(true) }/>
+				</PhotoView>
+			</PhotoProvider>
 			<div className="flex items-center gap-4">
 				<PostActions
 					type="like"
