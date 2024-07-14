@@ -1,0 +1,7 @@
+.homeContainer {
+	&:hover {
+		svg {
+			transform: translateX(-2px);
+		}
+	}
+}

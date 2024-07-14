@@ -11,7 +11,7 @@ const Post = ({ user, image, content, createdAt, comment }: IPostProps): React.R
 	const [isFullText, setIsFullText] = useState<boolean>(false);
 	const [isLiked, setIsLiked] = useState<boolean>(false);
 
-	return(
+	return (
 		<div className="flex flex-col gap-4 max-w-[400px]">
 			<div className="flex justify-between">
 				<PostAvatar user={ user } type="lg" />
@@ -37,7 +37,7 @@ const Post = ({ user, image, content, createdAt, comment }: IPostProps): React.R
 				maskOpacity={ 0.9 }
 			>
 				<PhotoView src={ image }>
-					<img src={ image } alt="Kernel: Post image" className="w-full h-auto cursor-pointer" onDoubleClick={ () => setIsLiked(true) }/>
+					<img src={ image } alt="Kernel: Post image" className="w-full h-auto cursor-pointer" />
 				</PhotoView>
 			</PhotoProvider>
 			<div className="flex items-center gap-4">
